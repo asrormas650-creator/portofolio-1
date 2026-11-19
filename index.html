@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. Ilham — Web Developer & UI/UX Portfolio Showcase</title>
+  <meta name="description" content="Portofolio resmi M. Ilham — Web Developer & UI/UX Enthusiast, Komunitas SIKOKI, Universitas Nusantara PGRI Kediri. Tampilan Behance Presentation Style.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              yellow: '#fbbf24',
+              amber: '#f59e0b',
+              emerald: '#10b981',
+              cyan: '#06b6d4',
+              slate: '#0f172a',
+            }
+          },
+          boxShadow: {
+            'phone': '0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 10px 20px -5px rgba(15, 23, 42, 0.2)',
+            'phone-tilted': '25px 35px 60px -10px rgba(15, 23, 42, 0.3), 10px 15px 25px -5px rgba(15, 23, 42, 0.15)',
+            'card-float': '0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 1px 3px rgba(15, 23, 42, 0.08)',
+            'glow-emerald': '0 0 35px -5px rgba(16, 185, 129, 0.35)',
+            'glow-amber': '0 0 35px -5px rgba(245, 158, 11, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Technical Grid Canvas (Persis seperti style Behance Case Study di referensi) */
+    .bg-grid-canvas {
+      background-color: #f1f5f9;
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.28) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .dark .bg-grid-canvas {
+      background-color: #030712;
+      background-image: 
+        linear-gradient(to right, rgba(51, 65, 85, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(51, 65, 85, 0.35) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Floating Keyframe Animations untuk elemen 3D */
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+    @keyframes float-reverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(10px) rotate(-4deg); }
+    }
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.9; }
+    }
+
+    .animate-float {
+      animation: float-slow 5s ease-in-out infinite;
+    }
+    .animate-float-delay {
+      animation: float-reverse 6s ease-in-out infinite 1s;
+    }
+    .animate-pulse-soft {
+      animation: pulse-soft 3.5s ease-in-out infinite;
+    }
+
+    /* 3D Isometric Tilt Effects */
+    .perspective-container {
+      perspective: 1400px;
+    }
+    .phone-tilt-left {
+      transform: rotateY(14deg) rotateX(8deg) rotateZ(-6deg);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .phone-tilt-left:hover {
+      transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1.03);
+    }
+
+    .phone-tilt-diagonal {
+      transform: rotate(-18deg) skew(6deg) translateY(0);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .phone-tilt-diagonal:hover {
+      transform: rotate(0deg) skew(0deg) scale(1.06) translateY(-10px);
+      z-index: 40 !important;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+  </style>
+</head>
+<body class="bg-grid-canvas text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans transition-colors duration-300 selection:bg-amber-400 selection:text-slate-950">
+
+  <!-- ========================================== -->
+  <!-- 1. STICKY TOP NAVIGATION BAR               -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-slate-950/85 border-b border-slate-300/80 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo Brand & SIKOKI Tag -->
+        <a href="#hero" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-lg p-1">
+          <div class="w-9 h-9 rounded-xl bg-slate-950 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center font-heading font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+            M
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white leading-tight">
+              M. Ilham<span class="text-amber-500">.</span>
+            </span>
+            <span class="text-[10px] font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+              Web Dev &bull; UI/UX
+            </span>
+          </div>
+          <span class="ml-2 hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25">
+            SIKOKI Community
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-7" aria-label="Navigasi Utama Desktop">
+          <a href="#showcase-web" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Web App</a>
+          <a href="#showcase-promo" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Promosi & UI</a>
+          <a href="#showcase-stories" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Mobile Stories</a>
+          <a href="#tentang" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Tentang</a>
+          <a href="#keahlian" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Keahlian</a>
+          <a href="#kontak" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">Kontak</a>
+
+          <!-- Theme Toggle Switcher -->
+          <button id="theme-toggle" type="button" aria-label="Beralih Mode Gelap/Terang" class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl transition-colors">
+            <i id="theme-moon" data-lucide="moon" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+            <i id="theme-sun" data-lucide="sun" class="w-4 h-4 block dark:hidden text-slate-700"></i>
+          </button>
+
+          <!-- CTA Button -->
+          <a href="#kontak" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-amber-300 shadow-md hover:shadow-lg transition-all active:scale-95">
+            <span>Hire Me</span>
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          </a>
+        </nav>
+
+        <!-- Mobile Controls -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button id="mobile-theme-toggle" type="button" aria-label="Ganti Tema" class="p-2 text-slate-700 dark:text-slate-300 rounded-lg">
+            <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+            <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-slate-700"></i>
+          </button>
+          <button id="menu-btn" 
+                  type="button" 
+                  aria-expanded="false" 
+                  aria-controls="mobile-menu" 
+                  aria-label="Buka menu navigasi"
+                  class="p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg">
+            <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+            <i id="close-icon" data-lucide="x" class="w-6 h-6 hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-300 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl">
+      <nav class="flex flex-col px-4 pt-3 pb-6 space-y-2" aria-label="Navigasi Mobile">
+        <a href="#showcase-web" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Web Application Showcase</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#showcase-promo" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Event & Promotional Design</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#showcase-stories" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Mobile Stories & Prototypes</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#tentang" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Tentang M. Ilham</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#keahlian" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Keahlian & Tools</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#kontak" class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">
+          <span>Kontak & Diskusi</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- ========================================== -->
+    <!-- 2. HERO PRESENTATION INTRO                 -->
+    <!-- ========================================== -->
+    <section id="hero" class="relative pt-10 pb-16 sm:pt-16 sm:pb-20 border-b border-slate-300 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header Ribbon: Presentation Metadata -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-300 dark:border-slate-800/80">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-md bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-mono text-xs font-bold uppercase tracking-wider">
+              PORTFOLIO 2026
+            </span>
+            <span class="text-xs font-mono text-slate-500 uppercase tracking-widest">
+              VOL. 01 &bull; BEHANCE CURATED STYLE
+            </span>
+          </div>
+          <div class="flex items-center gap-4 text-xs font-mono text-slate-600 dark:text-slate-400">
+            <span class="inline-flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              STATUS: OPEN TO WORK & INTERNSHIP
+            </span>
+            <span class="hidden sm:inline-block text-slate-400">&bull;</span>
+            <span class="hidden sm:inline-block">SIKOKI CREATIVE LAB</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Text Intro -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Hi, Welcome to My Visual & Code Universe</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] font-heading">
+              M. Ilham — <span class="underline decoration-amber-500 decoration-wavy decoration-2">Web Developer</span> & UI/UX Designer.
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              Mahasiswa Sistem Informasi Semester 3 Universitas Nusantara PGRI Kediri & Komunitas SIKOKI. Berfokus pada perancangan antarmuka web interaktif yang bernilai estetika tinggi, performa kilat, dan pengalaman visual yang memikat.
+            </p>
+
+            <!-- Quick Action Badges & Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#showcase-web" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-amber-300 shadow-lg shadow-slate-900/10 dark:shadow-amber-400/20 active:scale-95 transition-all">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>Eksplorasi Showcase</span>
+              </a>
+              <a href="#tentang" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-800 hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-95 transition-all shadow-sm">
+                <i data-lucide="user-check" class="w-4 h-4 text-amber-500"></i>
+                <span>Latar Belakang</span>
+              </a>
+            </div>
+
+            <!-- Specs Bar -->
+            <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-300 dark:border-slate-800/80 max-w-lg">
+              <div>
+                <p class="text-2xl sm:text-3xl font-black font-heading text-slate-900 dark:text-white">Sem 3</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Sistem Informasi UNP</p>
+              </div>
+              <div>
+                <p class="text-2xl sm:text-3xl font-black font-heading text-amber-500">SIKOKI</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Coding Community</p>
+              </div>
+              <div>
+                <p class="text-2xl sm:text-3xl font-black font-heading text-slate-900 dark:text-white">100%</p>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Creative Passion</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Graphic Card / Visual Avatar with 3D Floating Elements -->
+          <div class="lg:col-span-5 relative flex justify-center">
+            
+            <!-- 3D Floating Reaction Stickers (Persis seperti di gambar) -->
+            <!-- 3D Heart Bubble -->
+            <div class="absolute -top-4 -left-6 z-20 animate-float">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-rose-400 text-white flex items-center justify-center shadow-xl shadow-rose-500/30 ring-4 ring-white/80 dark:ring-slate-900">
+                <i data-lucide="heart" class="w-7 h-7 fill-white"></i>
+              </div>
+            </div>
+
+            <!-- 3D Facebook / Social Sphere -->
+            <div class="absolute -top-6 right-8 z-20 animate-float-delay">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 ring-2 ring-white">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+            </div>
+
+            <!-- 3D Shiny Gradient Orb -->
+            <div class="absolute bottom-12 -right-4 z-20 animate-pulse-soft">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 via-rose-500 to-purple-600 shadow-lg shadow-amber-500/30 ring-2 ring-white"></div>
+            </div>
+
+            <!-- Hero Main Visual Card -->
+            <div class="relative w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-5 border-2 border-slate-300 dark:border-slate-800 shadow-2xl">
+              <!-- Card Header Bar -->
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400 font-semibold">ilham-profile.card</span>
+              </div>
+
+              <!-- Profile Picture Container -->
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 group">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" 
+                     alt="Foto Profil M. Ilham" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"></div>
+                
+                <!-- Bottom In-Image Badge -->
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 font-bold text-xs mb-1.5">
+                    <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+                    <span>SIKOKI CREATOR</span>
+                  </div>
+                  <h3 class="text-xl font-bold font-heading">M. Ilham</h3>
+                  <p class="text-xs text-slate-300">Kediri, Jawa Timur &bull; Indonesia</p>
+                </div>
+              </div>
+
+              <!-- Card Footer Tools Strip -->
+              <div class="flex items-center justify-between pt-3 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-2 py-0.5 rounded bg-slate-900 text-white font-mono text-[10px] font-bold">Ps</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-600 text-white font-mono text-[10px] font-bold">Ai</span>
+                  <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-mono text-[10px] font-bold">Fig</span>
+                  <span class="px-2 py-0.5 rounded bg-cyan-600 text-white font-mono text-[10px] font-bold">Tailwind</span>
+                </div>
+                <span class="text-xs font-bold text-amber-500 font-mono">#verified</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================================= -->
+    <!-- 3. SHOWCASE SECTION 1: SOCIAL MEDIA & WEB UI FEED (Persis Bagian 1 di Gambar Referensi) -->
+    <!-- ========================================================================================= -->
+    <section id="showcase-web" class="relative py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800 overflow-hidden">
+      
+      <!-- Right Watermark / Signature Label (Persis seperti "RANDY G. 2025" di kanan foto referensi) -->
+      <div class="hidden xl:block absolute right-3 top-1/2 -translate-y-1/2 -rotate-90 origin-right text-[11px] font-mono tracking-[0.25em] text-slate-400 dark:text-slate-600 uppercase select-none pointer-events-none">
+        M. ILHAM &bull; SIKOKI LAB &bull; 2026
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Top Category Rule (Persis seperti "Graphic Design ────── ( > )" di gambar) -->
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-sm sm:text-base font-black font-heading tracking-wide uppercase text-slate-900 dark:text-white">
+            Web & Social Feed
+          </span>
+          <div class="flex-grow h-[1.5px] bg-slate-300 dark:bg-slate-700"></div>
+          <div class="w-7 h-7 rounded-full border border-slate-400 dark:border-slate-600 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-900 hover:text-white dark:hover:bg-amber-400 dark:hover:text-slate-950 transition-colors cursor-pointer">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left: 3D Angled Realistic Smartphone Mockup -->
+          <div class="lg:col-span-5 relative flex justify-center perspective-container">
+            
+            <!-- 3D Floating Facebook Badge -->
+            <div class="absolute -top-5 left-4 z-30 animate-float">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center shadow-xl shadow-blue-600/30 ring-4 ring-white dark:ring-slate-900">
+                <i data-lucide="facebook" class="w-7 h-7 fill-white"></i>
+              </div>
+            </div>
+
+            <!-- 3D Floating Heart Bubble -->
+            <div class="absolute top-1/3 -right-3 z-30 animate-float-delay">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-lg shadow-pink-500/30 ring-4 ring-white dark:ring-slate-900">
+                <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
+              </div>
+            </div>
+
+            <!-- Floating 3D Instagram Gradient Circle -->
+            <div class="absolute -bottom-4 -left-3 z-30 animate-pulse-soft">
+              <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-purple-500/25 ring-2 ring-white">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+              </div>
+            </div>
+
+            <!-- Realistic Smartphone Frame -->
+            <div class="relative w-[285px] sm:w-[310px] rounded-[44px] p-3 bg-slate-900 shadow-phone phone-tilt-left border-[5px] border-slate-800">
+              <!-- Speaker & Dynamic Island -->
+              <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-between px-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-700"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-blue-950/60"></div>
+              </div>
+
+              <!-- Phone Screen Content -->
+              <div class="relative bg-white text-slate-900 rounded-[34px] overflow-hidden pt-7 pb-4 px-3 flex flex-col justify-between aspect-[9/18]">
+                
+                <!-- Status Bar -->
+                <div class="flex items-center justify-between px-2 text-[10px] font-semibold text-slate-700 pt-1">
+                  <span>09:41</span>
+                  <div class="flex items-center gap-1">
+                    <i data-lucide="wifi" class="w-3 h-3"></i>
+                    <i data-lucide="battery" class="w-3.5 h-3.5"></i>
+                  </div>
+                </div>
+
+                <!-- Story Bubbles -->
+                <div class="flex items-center gap-2 pt-3 pb-2 overflow-x-hidden border-b border-slate-100">
+                  <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 to-rose-500">
+                      <div class="w-full h-full rounded-full bg-white p-[1px]">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-full h-full rounded-full object-cover">
+                      </div>
+                    </div>
+                    <span class="text-[8px] text-slate-500 mt-0.5">Your Story</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full p-[2px] bg-slate-200">
+                      <div class="w-full h-full rounded-full bg-white p-[1px]">
+                        <div class="w-full h-full rounded-full bg-amber-400 flex items-center justify-center text-[10px] font-bold text-slate-950">SK</div>
+                      </div>
+                    </div>
+                    <span class="text-[8px] text-slate-500 mt-0.5">SIKOKI</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full p-[2px] bg-slate-200">
+                      <div class="w-full h-full rounded-full bg-slate-100"></div>
+                    </div>
+                    <span class="text-[8px] text-slate-400 mt-0.5">Campus</span>
+                  </div>
+                </div>
+
+                <!-- Social Feed Post (Persis Desain Ragam Biaya KPR di foto) -->
+                <div class="bg-amber-400 rounded-2xl p-3 my-2 text-slate-950 flex flex-col justify-between shadow-sm relative overflow-hidden">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-1.5">
+                      <div class="w-5 h-5 rounded-full bg-slate-950 text-white flex items-center justify-center text-[9px] font-black">M</div>
+                      <span class="text-[9px] font-bold">sikoki.creative</span>
+                    </div>
+                    <span class="text-[8px] font-mono px-1.5 py-0.5 rounded bg-black/10">SWIPE &bull; 01/05</span>
+                  </div>
+                  
+                  <div class="my-1">
+                    <span class="text-[9px] font-black uppercase tracking-wider text-slate-800">TIPS KODING & DESAIN</span>
+                    <h4 class="text-xs font-black font-heading leading-tight mt-0.5">
+                      Ragam Kunci Membangun Web Modern & Terstruktur
+                    </h4>
+                  </div>
+
+                  <div class="w-full h-24 rounded-xl overflow-hidden my-2 relative">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Code mockup" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-slate-950/20"></div>
+                  </div>
+
+                  <div class="text-[8px] font-semibold text-slate-900 bg-white/70 backdrop-blur-sm rounded-lg p-1.5">
+                    1. Semantic HTML &bull; 2. Utility Tailwind &bull; 3. Clean Logic
+                  </div>
+                </div>
+
+                <!-- Post Actions Bar -->
+                <div class="flex items-center justify-between text-slate-700 px-1 py-1">
+                  <div class="flex items-center gap-3">
+                    <i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-rose-500"></i>
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                  </div>
+                  <i data-lucide="bookmark" class="w-4 h-4"></i>
+                </div>
+
+                <!-- Bottom Navigation Bar -->
+                <div class="flex items-center justify-between px-3 pt-2 border-t border-slate-100 text-slate-500">
+                  <i data-lucide="home" class="w-4 h-4 text-slate-950"></i>
+                  <i data-lucide="search" class="w-4 h-4"></i>
+                  <i data-lucide="plus-square" class="w-4 h-4"></i>
+                  <i data-lucide="film" class="w-4 h-4"></i>
+                  <div class="w-4 h-4 rounded-full bg-slate-300"></div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Section Description & 3-Card Carousel Presentation -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Title with Quote Marks (Persis seperti " SOCIAL MEDIA DESIGN " di foto referensi) -->
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-3xl font-black text-amber-500 font-serif leading-none">"</span>
+                <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase font-heading">
+                  SOCIAL MEDIA & WEB DESIGN
+                </h2>
+              </div>
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl">
+                Saya mengkhususkan diri dalam merancang konten visual media sosial yang dinamis, feed carousel Instagram yang estetik, serta antarmuka web modern yang langsung memikat perhatian. Mengombinasikan kekuatan Figma, Tailwind CSS, dan Photoshop untuk menghasilkan interaksi bermakna dan terukur.
+              </p>
+            </div>
+
+            <!-- 3 Carousel Cards Layout (Persis di samping mockup di foto referensi) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              
+              <!-- Card 1: Edukasi KPR / SIKOKI Card -->
+              <div class="bg-amber-400 rounded-2xl p-4 text-slate-950 shadow-card-float hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center text-[10px] font-bold text-slate-900 mb-2">
+                    <span>SIKOKI TIPS</span>
+                    <span>#01</span>
+                  </div>
+                  <div class="space-y-1.5 my-3">
+                    <div class="bg-white/80 rounded-lg p-2 text-[10px] font-bold">1. Struktur Semantik</div>
+                    <div class="bg-white/80 rounded-lg p-2 text-[10px] font-bold">2. Tailwind Utility</div>
+                    <div class="bg-white/80 rounded-lg p-2 text-[10px] font-bold">3. Vanilla JS Engine</div>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-slate-900/10 flex items-center justify-between text-[10px] font-bold">
+                  <span>Carousel Slide 1</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 2: Property / Kampus Card -->
+              <div class="bg-amber-400 rounded-2xl p-4 text-slate-950 shadow-card-float hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center text-[10px] font-bold text-slate-900 mb-2">
+                    <span>CAMPUS LIFE</span>
+                    <span>#02</span>
+                  </div>
+                  <div class="w-full h-24 rounded-xl overflow-hidden my-2">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=300&q=80" alt="Campus" class="w-full h-full object-cover">
+                  </div>
+                  <p class="text-[10px] font-bold leading-tight">
+                    Sistem Informasi UNP Kediri & SIKOKI Hub
+                  </p>
+                </div>
+                <div class="pt-3 border-t border-slate-900/10 flex items-center justify-between text-[10px] font-bold">
+                  <span>Carousel Slide 2</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+              <!-- Card 3: Modern Real Estate Grid / Web Card -->
+              <div class="bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-2xl p-4 text-slate-900 dark:text-white shadow-card-float hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center text-[10px] font-bold text-amber-500 mb-2">
+                    <span>SHOWCASE</span>
+                    <span>#03</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-1.5 my-2">
+                    <div class="h-12 rounded-lg bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=200&q=80" alt="UI" class="w-full h-full object-cover">
+                    </div>
+                    <div class="h-12 rounded-lg bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=200&q=80" alt="UI" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <p class="text-[10px] font-bold leading-tight">
+                    Clean UI Grid Architecture
+                  </p>
+                </div>
+                <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-bold text-amber-500">
+                  <span>Carousel Slide 3</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom Hashtags & Tools Badges (Persis Bagian Bawah di Foto) -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-300 dark:border-slate-800">
+              <div class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 space-x-2">
+                <span>#instagramfeed</span>
+                <span>#socialmedia</span>
+                <span>#webdesign</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-[#001e36] text-[#31a8ff] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ps
+                </span>
+                <span class="w-8 h-8 rounded-lg bg-[#330000] text-[#ff9a00] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ai
+                </span>
+                <span class="w-8 h-8 rounded-lg bg-purple-950 text-purple-300 flex items-center justify-center font-bold text-xs shadow-sm">
+                  Fig
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================================= -->
+    <!-- 4. SHOWCASE SECTION 2: EVENT PROMOTION & PRODUCT BANNERS (Persis Bagian 2 di Gambar)     -->
+    <!-- ========================================================================================= -->
+    <section id="showcase-promo" class="relative py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800 overflow-hidden">
+      
+      <!-- Vertical Right Watermark -->
+      <div class="hidden xl:block absolute right-3 top-1/2 -translate-y-1/2 -rotate-90 origin-right text-[11px] font-mono tracking-[0.25em] text-slate-400 dark:text-slate-600 uppercase select-none pointer-events-none">
+        M. ILHAM &bull; CREATIVE LAB &bull; 2026
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Category Rule -->
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-sm sm:text-base font-black font-heading tracking-wide uppercase text-slate-900 dark:text-white">
+            Promotional & Digital Assets
+          </span>
+          <div class="flex-grow h-[1.5px] bg-slate-300 dark:bg-slate-700"></div>
+          <div class="w-7 h-7 rounded-full border border-slate-400 dark:border-slate-600 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-900 hover:text-white dark:hover:bg-amber-400 dark:hover:text-slate-950 transition-colors cursor-pointer">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Left Column: Social Events Multi-Panel Brochure -->
+          <div class="lg:col-span-4 space-y-6">
+            
+            <div class="relative">
+              <!-- Floating 3D Purple Bubble -->
+              <div class="absolute -top-4 -left-4 z-20 animate-float">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-700 to-indigo-400 shadow-md ring-2 ring-white"></div>
+              </div>
+
+              <!-- Brochure Tri-Fold Preview Card -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 border-2 border-slate-300 dark:border-slate-800 shadow-xl space-y-4">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span class="font-bold text-slate-900 dark:text-white">SIKOKI EVENT FOLDER</span>
+                  <span>TRI-FOLD</span>
+                </div>
+
+                <!-- 3 Mini Panels Layout -->
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="rounded-xl overflow-hidden aspect-[3/4] bg-slate-900 relative">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="Event" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-slate-950/40 p-2 flex flex-col justify-end">
+                      <span class="text-[8px] font-bold text-white leading-tight">WORKSHOP</span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl overflow-hidden aspect-[3/4] bg-slate-950 relative border-2 border-amber-400">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=300&q=80" alt="Event" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-slate-950/40 p-2 flex flex-col justify-end text-center">
+                      <span class="text-[9px] font-black text-amber-400 leading-tight">SIKOKI FEST</span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl overflow-hidden aspect-[3/4] bg-slate-900 relative">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=300&q=80" alt="Event" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-slate-950/40 p-2 flex flex-col justify-end">
+                      <span class="text-[8px] font-bold text-white leading-tight">COMMUNITY</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Perancangan materi promosi cetak dan digital untuk acara festival komunitas, pameran inovasi kampus, serta publikasi seminar teknologi.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Product Promo (Persis "LIQUID VAPE PRODUCT PROMOTION" di foto) -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl font-black text-amber-500 font-serif leading-none">"</span>
+                <h3 class="text-lg font-black font-heading uppercase text-slate-900 dark:text-white">
+                  PRODUCT COMMERCIAL PROMOTION
+                </h3>
+              </div>
+              
+              <div class="grid grid-cols-3 gap-3">
+                <!-- Product Card 1 -->
+                <div class="rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-cyan-400 to-blue-600 p-2 text-white relative shadow-md group hover:scale-105 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=250&q=80" alt="Gadget" class="w-full h-full object-cover rounded-xl">
+                  <div class="absolute bottom-1 left-2 text-[8px] font-bold drop-shadow">TECH ACCESSORY</div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-amber-400 to-orange-500 p-2 text-white relative shadow-md group hover:scale-105 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=250&q=80" alt="Shoes" class="w-full h-full object-cover rounded-xl">
+                  <div class="absolute bottom-1 left-2 text-[8px] font-bold drop-shadow">SNEAKER PROMO</div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-emerald-400 to-teal-600 p-2 text-white relative shadow-md group hover:scale-105 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=250&q=80" alt="Coffee" class="w-full h-full object-cover rounded-xl">
+                  <div class="absolute bottom-1 left-2 text-[8px] font-bold drop-shadow">ARTISAN COFFEE</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: 6-Grid Square Poster Designs (Batik, Nike, Kuliner, Black Friday, dll) -->
+          <div class="lg:col-span-8 space-y-6">
+            
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-3xl font-black text-amber-500 font-serif leading-none">"</span>
+                <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase font-heading">
+                  EVENT PROMOTION & COMMERCIAL BANNERS
+                </h2>
+              </div>
+              <!-- Floating 3D Instagram Orb -->
+              <div class="hidden sm:block animate-pulse-soft">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 shadow-md"></div>
+              </div>
+            </div>
+
+            <!-- 6 Banners Grid (Persis Seperti di Foto Referensi) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              
+              <!-- Banner 1: Batik Heritage Exhibition -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-amber-900 shadow-md border border-slate-300 dark:border-slate-800">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Batik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent p-4 flex flex-col justify-end text-white">
+                  <span class="text-[9px] font-mono text-amber-400 uppercase">HERITAGE EXHIBITION</span>
+                  <h4 class="text-sm font-black font-heading leading-tight">Batik Nusantara Fashion 2026</h4>
+                </div>
+              </div>
+
+              <!-- Banner 2: Nike Sneaker Launch (Persis Banner Merah di Foto) -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-rose-600 shadow-md border border-slate-300 dark:border-slate-800">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" alt="Sneaker" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-4 flex flex-col justify-between text-white">
+                  <span class="text-xs font-black tracking-tighter">NIKE AIR PRO</span>
+                  <div>
+                    <span class="px-2 py-0.5 rounded bg-white text-slate-950 font-black text-[9px]">FLASH SALE</span>
+                    <h4 class="text-sm font-black mt-1">SUPER SNEAKER</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Banner 3: Food Promo / Baso Aci Mantap (Persis Banner Kuliner di Foto) -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-orange-600 shadow-md border border-slate-300 dark:border-slate-800">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" alt="Food" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
+                  <span class="text-[9px] font-mono text-amber-400 uppercase">KULINER NUSANTARA</span>
+                  <h4 class="text-sm font-black font-heading leading-tight">Kuliner Pedas Juara</h4>
+                </div>
+              </div>
+
+              <!-- Banner 4: Black Friday Smart Watch (Persis Banner Hitam Minimalis di Foto) -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-950 shadow-md border border-slate-300 dark:border-slate-800 p-4 flex flex-col justify-between text-white">
+                <div class="flex justify-between items-center text-[9px] font-mono">
+                  <span class="text-amber-400">LIMITED EDITION</span>
+                  <span>40% OFF</span>
+                </div>
+                <div class="w-20 h-20 mx-auto my-auto rounded-full overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=250&q=80" alt="Watch" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <div>
+                  <h4 class="text-xs font-black font-heading">SMART GADGET 2026</h4>
+                  <p class="text-[9px] text-slate-400">Minimalist Dark Edition</p>
+                </div>
+              </div>
+
+              <!-- Banner 5: Artisan Coffee Drink (Persis Banner Kopi di Foto) -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-amber-950 shadow-md border border-slate-300 dark:border-slate-800">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="Coffee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
+                  <span class="text-[9px] font-mono text-amber-400 uppercase">SPECIAL BLEND</span>
+                  <h4 class="text-sm font-black font-heading leading-tight">Ice Caramel Macchiato</h4>
+                </div>
+              </div>
+
+              <!-- Banner 6: Organic Skincare Promo (Persis Banner Hijau Kosmetik di Foto) -->
+              <div class="group relative rounded-2xl overflow-hidden aspect-square bg-emerald-900 shadow-md border border-slate-300 dark:border-slate-800">
+                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80" alt="Skincare" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
+                  <span class="text-[9px] font-mono text-emerald-400 uppercase">NATURAL GLOW</span>
+                  <h4 class="text-sm font-black font-heading leading-tight">Organic Serum Edition</h4>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Footer Strip: Hashtags & Badges -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-300 dark:border-slate-800">
+              <div class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 space-x-2">
+                <span>#eventpromotion</span>
+                <span>#graphicdesign</span>
+                <span>#productposter</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-[#001e36] text-[#31a8ff] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ps
+                </span>
+                <span class="w-8 h-8 rounded-lg bg-[#330000] text-[#ff9a00] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ai
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================================= -->
+    <!-- 5. SHOWCASE SECTION 3: SOCIAL MEDIA STORIES & DIAGONAL PHONES (Persis Bagian 3 di Gambar)-->
+    <!-- ========================================================================================= -->
+    <section id="showcase-stories" class="relative py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800 overflow-hidden">
+      
+      <!-- Vertical Right Watermark -->
+      <div class="hidden xl:block absolute right-3 top-1/2 -translate-y-1/2 -rotate-90 origin-right text-[11px] font-mono tracking-[0.25em] text-slate-400 dark:text-slate-600 uppercase select-none pointer-events-none">
+        M. ILHAM &bull; SIKOKI LAB &bull; 2026
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Category Rule -->
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-sm sm:text-base font-black font-heading tracking-wide uppercase text-slate-900 dark:text-white">
+            Mobile Story & UI Prototypes
+          </span>
+          <div class="flex-grow h-[1.5px] bg-slate-300 dark:bg-slate-700"></div>
+          <div class="w-7 h-7 rounded-full border border-slate-400 dark:border-slate-600 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-900 hover:text-white dark:hover:bg-amber-400 dark:hover:text-slate-950 transition-colors cursor-pointer">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left: Title, Description, and Connected Diagram Timeline (Persis Seperti di Foto) -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-3xl font-black text-amber-500 font-serif leading-none">"</span>
+                <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase font-heading">
+                  SOCIAL MEDIA STORIES DESIGN
+                </h2>
+              </div>
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl">
+                Format cerita vertikal (9:16) merupakan kanvas luar biasa untuk pesan dinamis dan emosional. Saya merancang pengalaman visual yang ringkas namun membekas, memadukan tipografi kuat dan estetika modern untuk kebutuhan promosi mahasiswa, komunitas, maupun brand profesional.
+              </p>
+            </div>
+
+            <!-- Connected Yellow Wire Timeline (Persis Garis Kuning Penghubung di Foto) -->
+            <div class="relative pt-6">
+              
+              <!-- Yellow line with dots connecting to 3 vertical cards -->
+              <div class="hidden sm:flex items-center justify-between relative mb-4">
+                <div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-0.5 bg-amber-400"></div>
+                <div class="relative z-10 w-4 h-4 rounded-full bg-amber-400 ring-4 ring-white dark:ring-slate-900"></div>
+                <div class="relative z-10 w-4 h-4 rounded-full bg-amber-400 ring-4 ring-white dark:ring-slate-900"></div>
+                <div class="relative z-10 w-4 h-4 rounded-full bg-amber-400 ring-4 ring-white dark:ring-slate-900"></div>
+              </div>
+
+              <!-- 3 Story Cards (Idul Fitri / Wedding / New Year 2026 - Persis seperti di foto) -->
+              <div class="grid grid-cols-3 gap-3">
+                
+                <!-- Story 1: Idul Fitri Card -->
+                <div class="rounded-2xl overflow-hidden aspect-[9/16] bg-slate-900 relative shadow-card-float border border-slate-300 dark:border-slate-800 group hover:-translate-y-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80" alt="Festival" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent p-2.5 flex flex-col justify-end text-white">
+                    <span class="text-[8px] font-mono text-cyan-400">ISLAMIC FEST</span>
+                    <h5 class="text-[10px] font-black leading-tight">Idul Fitri Greetings</h5>
+                  </div>
+                </div>
+
+                <!-- Story 2: Wedding Invitation Card -->
+                <div class="rounded-2xl overflow-hidden aspect-[9/16] bg-slate-200 dark:bg-slate-900 relative shadow-card-float border border-slate-300 dark:border-slate-800 group hover:-translate-y-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=300&q=80" alt="Wedding" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent p-2.5 flex flex-col justify-end text-white">
+                    <span class="text-[8px] font-mono text-amber-400">INVITATION</span>
+                    <h5 class="text-[10px] font-black leading-tight">Wedding Ring Luxury</h5>
+                  </div>
+                </div>
+
+                <!-- Story 3: New Year 2026 Celebration -->
+                <div class="rounded-2xl overflow-hidden aspect-[9/16] bg-slate-950 relative shadow-card-float border border-slate-300 dark:border-slate-800 group hover:-translate-y-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=300&q=80" alt="New Year" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent p-2.5 flex flex-col justify-end text-white text-center">
+                    <span class="text-xs font-black text-amber-400 font-mono">2026</span>
+                    <h5 class="text-[10px] font-black leading-tight">New Year Glow</h5>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Bottom Tags & Tools -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-300 dark:border-slate-800">
+              <div class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 space-x-2">
+                <span>#instagramstories</span>
+                <span>#socialmedia</span>
+                <span>#mobileprototyping</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-[#001e36] text-[#31a8ff] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ps
+                </span>
+                <span class="w-8 h-8 rounded-lg bg-[#330000] text-[#ff9a00] flex items-center justify-center font-bold text-xs shadow-sm">
+                  Ai
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: 4-Angled Diagonal Floating Smartphone Mockups (Persis Seperti di Foto) -->
+          <div class="lg:col-span-7 relative pt-6 sm:pt-0">
+            
+            <!-- Floating 3D Heart Bubble -->
+            <div class="absolute -top-4 right-1/4 z-30 animate-float">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-lg shadow-pink-500/30 ring-2 ring-white">
+                <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
+              </div>
+            </div>
+
+            <!-- Floating 3D Glass Sphere -->
+            <div class="absolute bottom-4 left-4 z-30 animate-pulse-soft">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 shadow-md ring-2 ring-white"></div>
+            </div>
+
+            <!-- Diagonal Phones Cascade Wrapper -->
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 max-w-xl mx-auto">
+              
+              <!-- Phone 1 (Diagonal Top Left) -->
+              <div class="relative rounded-[32px] p-2 bg-slate-900 shadow-phone-tilted phone-tilt-diagonal border-4 border-slate-800">
+                <div class="rounded-[24px] overflow-hidden aspect-[9/18] bg-slate-950 relative">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Promo Story" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
+                    <span class="px-2 py-0.5 rounded bg-rose-500 text-[8px] font-bold w-fit mb-1">TERJUAL HABIS</span>
+                    <h5 class="text-xs font-bold leading-tight">Hijab Fashion Campus</h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone 2 (Diagonal Top Right) -->
+              <div class="relative rounded-[32px] p-2 bg-slate-900 shadow-phone-tilted phone-tilt-diagonal border-4 border-slate-800 -mt-6">
+                <div class="rounded-[24px] overflow-hidden aspect-[9/18] bg-slate-950 relative">
+                  <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Culinary" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
+                    <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 text-[8px] font-bold w-fit mb-1">KULINER KEDIRI</span>
+                    <h5 class="text-xs font-bold leading-tight">Nasi Tempong Bebek</h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone 3 (Diagonal Bottom Left) -->
+              <div class="relative rounded-[32px] p-2 bg-slate-900 shadow-phone-tilted phone-tilt-diagonal border-4 border-slate-800 -mt-4">
+                <div class="rounded-[24px] overflow-hidden aspect-[9/18] bg-slate-950 relative">
+                  <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80" alt="Yoga Class" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
+                    <span class="px-2 py-0.5 rounded bg-emerald-500 text-[8px] font-bold w-fit mb-1">HEALTH & WELLNESS</span>
+                    <h5 class="text-xs font-bold leading-tight">Yoga Class Weekend</h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone 4 (Diagonal Bottom Right) -->
+              <div class="relative rounded-[32px] p-2 bg-slate-900 shadow-phone-tilted phone-tilt-diagonal border-4 border-slate-800 -mt-10">
+                <div class="rounded-[24px] overflow-hidden aspect-[9/18] bg-slate-950 relative">
+                  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Food Delivery" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
+                    <span class="px-2 py-0.5 rounded bg-cyan-500 text-slate-950 text-[8px] font-bold w-fit mb-1">SIKOKI APP</span>
+                    <h5 class="text-xs font-bold leading-tight">Gourmet Catering UI</h5>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. ABOUT SECTION (PRD Compliant)           -->
+    <!-- ========================================== -->
+    <section id="tentang" class="py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-sm sm:text-base font-black font-heading tracking-wide uppercase text-slate-900 dark:text-white">
+            04 &bull; Profil & Latar Belakang
+          </span>
+          <div class="flex-grow h-[1.5px] bg-slate-300 dark:bg-slate-700"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Card 1: Pendidikan -->
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border-2 border-slate-300 dark:border-slate-800 shadow-card-float flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-500 flex items-center justify-center mb-6">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold font-heading text-slate-900 dark:text-white mb-2">Akademik & Pendidikan</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Mahasiswa aktif program studi <strong class="text-slate-900 dark:text-white">Sistem Informasi (Semester 3)</strong> di <strong class="text-slate-900 dark:text-white">Universitas Nusantara PGRI Kediri</strong>.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500 flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+              <span>Fokus: Rekayasa Web & Arsitektur Data</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Komunitas SIKOKI -->
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border-2 border-slate-300 dark:border-slate-800 shadow-card-float flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-500 flex items-center justify-center mb-6">
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold font-heading text-slate-900 dark:text-white mb-2">Komunitas Koding SIKOKI</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Berkolaborasi aktif dalam komunitas koding <strong class="text-slate-900 dark:text-white">SIKOKI</strong> dalam kegiatan coding bootcamp, peer review proyek mahasiswa, serta eksplorasi teknologi web modern.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500 flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+              <span>Kolaboratif & Berorientasi Solusi</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Minat Profesional -->
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border-2 border-slate-300 dark:border-slate-800 shadow-card-float flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-rose-500 flex items-center justify-center mb-6">
+                <i data-lucide="palette" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold font-heading text-slate-900 dark:text-white mb-2">Minat & Spesialisasi</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Antusiasme mendalam pada integrasi <strong class="text-slate-900 dark:text-white">Frontend Web Development</strong> dan <strong class="text-slate-900 dark:text-white">UI/UX Design</strong> untuk menghasilkan website cepat, estetis, dan inklusif.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500 flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+              <span>Modern Microinteractions</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 7. TECH STACK SECTION (PRD Compliant)      -->
+    <!-- ========================================== -->
+    <section id="keahlian" class="py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex items-center gap-4 mb-10">
+          <span class="text-sm sm:text-base font-black font-heading tracking-wide uppercase text-slate-900 dark:text-white">
+            05 &bull; Keahlian & Teknologi
+          </span>
+          <div class="flex-grow h-[1.5px] bg-slate-300 dark:bg-slate-700"></div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          
+          <!-- HTML5 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="code-2" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">HTML5</h4>
+            <span class="text-[10px] font-mono text-slate-500">Semantic & SEO</span>
+          </div>
+
+          <!-- CSS3 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="layout" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">CSS3</h4>
+            <span class="text-[10px] font-mono text-slate-500">Grid & Flexbox</span>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="terminal" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">JavaScript</h4>
+            <span class="text-[10px] font-mono text-slate-500">Vanilla ES6+</span>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="wind" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Tailwind CSS</h4>
+            <span class="text-[10px] font-mono text-slate-500">Utility Engine</span>
+          </div>
+
+          <!-- Figma -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="figma" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Figma</h4>
+            <span class="text-[10px] font-mono text-slate-500">UI/UX & Prototype</span>
+          </div>
+
+          <!-- Git & GitHub -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border-2 border-slate-300 dark:border-slate-800 text-center hover:border-amber-400 transition-all shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-slate-800 text-slate-200 flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="git-branch" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Git & GitHub</h4>
+            <span class="text-[10px] font-mono text-slate-500">Version Control</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. KONTAK SECTION                          -->
+    <!-- ========================================== -->
+    <section id="kontak" class="py-16 sm:py-24 border-b border-slate-300 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-14 border-2 border-slate-300 dark:border-slate-800 shadow-2xl relative overflow-hidden text-center max-w-4xl mx-auto">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono text-xs uppercase mb-4">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>Let's Build Something Awesome</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl font-black font-heading text-slate-900 dark:text-white tracking-tight mb-4">
+            Siap Berkolaborasi di Proyek Selanjutnya?
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            Terbuka untuk diskusi kolaborasi pembuatan website, desain antarmuka aplikasi, kegiatan komunitas SIKOKI, maupun kesempatan magang industri.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="mailto:ilham@example.com" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-amber-300 shadow-lg active:scale-95 transition-all">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>Hubungi via Email</span>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95 transition-all">
+              <i data-lucide="github" class="w-4 h-4"></i>
+              <span>GitHub M. Ilham</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 9. FOOTER SECTION                          -->
+  <!-- ========================================== -->
+  <footer class="bg-white/80 dark:bg-slate-950 py-10 border-t border-slate-300 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        
+        <div class="flex flex-col items-center sm:items-start space-y-1">
+          <span class="font-heading font-black text-lg text-slate-900 dark:text-white">
+            M. Ilham<span class="text-amber-500">.</span>
+          </span>
+          <p class="text-xs text-slate-500 font-mono">
+            &copy; <span id="current-year">2026</span> M. Ilham &bull; Behance Curated Portfolio Presentation
+          </p>
+        </div>
+
+        <div class="text-center sm:text-right text-xs text-slate-500 font-mono">
+          <p>Sistem Informasi &bull; Universitas Nusantara PGRI Kediri</p>
+          <p class="mt-0.5 text-amber-600 dark:text-amber-400 font-semibold">Komunitas Koding SIKOKI</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- File JavaScript Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
